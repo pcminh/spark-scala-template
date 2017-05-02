@@ -1,7 +1,7 @@
 Scala Boilerplate
 =================
 
-[![Build Status](https://travis-ci.org/marconilanna/scala-boilerplate.svg)](https://travis-ci.org/marconilanna/scala-boilerplate)
+[![Build Status](https://travis-ci.org/dbast/spark-scala-template.svg?branch=master)](https://travis-ci.org/dbast/spark-scala-template)
 
 Assortment of default settings, best practices, and general goodies for Scala projects.
 
