@@ -14,20 +14,12 @@
  * limitations under the License.
  */
 
-resolvers ++= Seq(
-  Resolver.sonatypeRepo("releases")
-, "Flyway" at "https://flywaydb.org/repo"
-)
-
-// http://flywaydb.org/documentation/sbt/
-addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
-
 // http://www.scalastyle.org/
 // http://github.com/scalastyle/scalastyle-sbt-plugin
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.8.0")
 
 // http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "1.2.1")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.0.3")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
@@ -57,7 +49,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
 
 // http://github.com/alexarchambault/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-9")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC1")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse

@@ -285,20 +285,6 @@ shellPrompt := { state =>
 }
 
 /*
- * Database migration
- */
-
-import com.typesafe.config.ConfigFactory
-
-val conf = ConfigFactory.parseFile(new File("src/resources/application.conf")).resolve
-
-flywayUrl := conf.getString("db.url")
-
-flywayLocations := Seq("classpath:db/migration")
-
-flywaySqlMigrationPrefix := ""
-
-/*
  * Scalastyle: http://www.scalastyle.org/
  */
 
