@@ -4,5 +4,14 @@ scala:
 jdk:
  - oraclejdk8
 
+cache:
+  directories:
+    - $HOME/.ivy2
+    - $HOME/.sbt/launchers
+
 script:
   - ./sbt test
+
+  # Trick to avoid unnecessary cache updates
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
