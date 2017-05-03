@@ -14,7 +14,7 @@
     </parameters>
   </check>
   <check class="org.scalastyle.file.FileTabChecker" enabled="true" level="error"/>
-  <check class="org.scalastyle.file.HeaderMatchesChecker" enabled="true" level="error">
+  <check class="org.scalastyle.file.HeaderMatchesChecker" enabled="false" level="error">
     <parameters>
       <parameter name="regex">true</parameter>
       <parameter name="header">/\*
@@ -132,7 +132,7 @@
   <check class="org.scalastyle.scalariform.IllegalImportsChecker" enabled="true" level="error">
     <parameter name="illegalImports">sun._,java.awt._,scala.collection.JavaConversions._,scala.collection.mutable._,scala.language.postfix</parameter>
   </check>
-  <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.ImportGroupingChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.ImportOrderChecker" enabled="true" level="error">
     <parameters>
       <parameter name="groups">PROJECT,com,net,org,others,play,scala,java,javax</parameter>
@@ -245,7 +245,7 @@
     </parameters>
     <customMessage>'Some' found: use Option.apply or avoid pattern matching on Option</customMessage>
   </check>
-  <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="true" level="error"/>
+  <check class="org.scalastyle.scalariform.UnderscoreImportChecker" enabled="false" level="error"/>
   <check class="org.scalastyle.scalariform.UppercaseLChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarFieldChecker" enabled="true" level="error"/>
   <check class="org.scalastyle.scalariform.VarLocalChecker" enabled="true" level="error"/>
