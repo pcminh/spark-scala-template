@@ -47,6 +47,9 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
 // http://github.com/jrudolph/sbt-dependency-graph
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
 
+// Adds a `assembly` task to create a fat JAR with all of its dependencies
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.3")
+
 // http://github.com/sbt/sbt-license-report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 

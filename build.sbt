@@ -316,6 +316,11 @@ testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask
 (test in Test) := ((test in Test) dependsOn mainScalastyle).value
 
 /*
+ * sbt-assembly https://github.com/sbt/sbt-assembly
+ */
+test in assembly := {}
+
+/*
  * WartRemover: http://github.com/puffnfresh/wartremover
  */
 
