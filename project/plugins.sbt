@@ -21,6 +21,12 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "0.9.0")
 // http://github.com/puffnfresh/wartremover
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.1.1")
 
+// http://github.com/wartremover/wartremover-contrib/
+addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
+
+// http://github.com/danielnixon/extrawarts
+addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
+
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
@@ -35,6 +41,9 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.10")
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
+
+// https://github.com/sbt/sbt-buildinfo
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.7.0")
 
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")

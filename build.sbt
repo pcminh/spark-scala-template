@@ -50,6 +50,13 @@ resourceDirectory in Test := (scalaSource in Test).value / "resources"
 
 compileOrder := CompileOrder.JavaThenScala
 
+// Enable BuildInfo
+lazy val root = Project("root", file("."))
+  .enablePlugins(BuildInfoPlugin)
+  .settings(
+    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
+  )
+
 val commonScalacOptions = Seq(
   "-encoding",
   "UTF-8", // Specify character encoding used by source files
@@ -332,8 +339,20 @@ wartremoverErrors ++= Seq(
 //Wart.ToString
   Wart.TraversableOps,
   Wart.TryPartial,
-  Wart.Var
-//Wart.While
+  Wart.Var,
+//Wart.While,
+  ContribWart.ExposedTuples,
+  ContribWart.OldTime,
+  ContribWart.SealedCaseClass,
+  ContribWart.SomeApply,
+  ExtraWart.EnumerationPartial,
+  ExtraWart.FutureObject,
+//ExtraWart.GenMapLikePartial,
+  ExtraWart.GenTraversableLikeOps,
+  ExtraWart.GenTraversableOnceOps,
+  ExtraWart.ScalaGlobalExecutionContext,
+  ExtraWart.StringOpsPartial,
+  ExtraWart.TraversableOnceOps
 )
 
 /*
