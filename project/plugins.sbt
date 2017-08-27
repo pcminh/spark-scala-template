@@ -53,7 +53,15 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC10")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-//addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.1")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.1")
+
+// Adds a `ensimeConfig` task to generate ensime project definitions
+// http://ensime.org/build_tools/sbt/
+addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.14")
+
+// A Sbt plugin that fills apiMappings for common Scala libraries.
+// https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
+addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "1.1.0")
 
 // A git plugin for SBT https://github.com/sbt/sbt-git
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.9.3")

@@ -67,7 +67,17 @@ The `stats` sbt task shows basic line counting statistics.
 sbteclipse
 ----------
 
-Uncomment the related line in `project/plugins.sbt` to enable the `eclipse` sbt task to create Eclipse project definitions.
+The `eclipse` sbt task to create Eclipse project definitions.
+
+ensime-sbt
+----------
+
+The `ensimeConfig` task to generate .ensime config files.
+
+sbt-api-mappings
+----------------
+
+Fills apiMappings for common Scala libraries during `doc` task.
 
 License
 -------

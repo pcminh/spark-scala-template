@@ -541,3 +541,9 @@ coverageOutputXML := false
 //  .setPreference(SpaceInsideParentheses, false)
 //  .setPreference(SpacesAroundMultiImports, false)
 //  .setPreference(SpacesWithinPatternBinders, true)
+
+/*
+ * Scaladoc options
+ */
+autoAPIMappings := true
+scalacOptions in (Compile, doc) ++= Seq("-groups", "-implicits") // "-diagrams")
