@@ -298,8 +298,8 @@ scalastyleFailOnError := true
 lazy val mainScalastyle = taskKey[Unit]("mainScalastyle")
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 
-mainScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
-testScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Test).toTask("").value
+mainScalastyle := scalastyle.in(Compile).toTask("").value
+testScalastyle := scalastyle.in(Test).toTask("").value
 
 (test in Test) := ((test in Test) dependsOn testScalastyle).value
 (test in Test) := ((test in Test) dependsOn mainScalastyle).value
