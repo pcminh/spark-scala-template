@@ -39,19 +39,12 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
 
 scalaVersion in ThisBuild := "2.11.8"
 
-scalaSource in Compile := baseDirectory.value / "src"
-javaSource in Compile := baseDirectory.value / "src"
-
-scalaSource in Test := baseDirectory.value / "test"
-javaSource in Test := baseDirectory.value / "test"
-
-resourceDirectory in Compile := (scalaSource in Compile).value / "resources"
-resourceDirectory in Test := (scalaSource in Test).value / "resources"
-
 compileOrder := CompileOrder.JavaThenScala
 
-// Enable BuildInfo
+// Load test configuration and enable BuildInfo
 lazy val root = Project("root", file("."))
+  .configs(Testing.all: _*)
+  .settings(Testing.settings)
   .enablePlugins(BuildInfoPlugin)
   .settings(
     buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
@@ -278,7 +271,7 @@ triggeredMessage := { ws =>
   if (ws.count > 1) {
     val ls = System.lineSeparator * 2
     ls + "#" * 100 + ls
-  } else ""
+  } else { "" }
 }
 
 shellPrompt := { state =>
@@ -517,6 +510,7 @@ coverageOutputXML := false
  */
 scalafmtConfig := baseDirectory.value / "project" / "scalafmt.conf"
 scalafmtOnCompile in ThisBuild := true
+inConfig(IntegrationTest)(scalafmtSettings)
 
 /*
  * Scaladoc options
