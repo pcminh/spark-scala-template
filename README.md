@@ -5,6 +5,11 @@ Scala Boilerplate
 
 Assortment of default settings, best practices, and general goodies for Scala projects.
 
+sbt bash wrapper
+----------------
+
+The sbt bash wrapper from https://github.com/paulp/sbt-extras is included as `./sbt` to reduce the build dependencies to OpenJDK 8 and bash.
+
 Scala REPL
 ----------
 
