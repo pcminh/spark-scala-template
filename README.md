@@ -54,10 +54,10 @@ sbt-license-report
 To generate a report with the dependency licenses used by the project, use the `dumpLicenseReport` sbt task.
 The report is saved to the `target/license-reports` directory.
 
-sbt-dependency-graph
---------------------
+dependency tree
+---------------
 
-This plugin adds three main tasks: `dependency-tree` displays the project dependencies as a tree, `dependency-graph` shows it as a graph, and `what-depends-on <organization> <module> <revision>` shows everything that depends on an artifact.
+The task `coursierDependencyTree` displays the project dependencies as a tree and `coursierDependencyInverseTree` shows everything that depends on an artifact.
 
 sbt-stats
 ---------

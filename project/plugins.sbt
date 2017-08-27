@@ -36,9 +36,6 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
 // http://github.com/rtimush/sbt-updates
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.1")
 
-// http://github.com/jrudolph/sbt-dependency-graph
-addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.2")
-
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")
 
