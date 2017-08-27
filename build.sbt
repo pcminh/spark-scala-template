@@ -1,5 +1,6 @@
 /*
  * Copyright 2011-2016 Marconi Lanna
+ * Copyright 2017 Daniel Bast
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +21,8 @@
 
 name := "PROJECT"
 
+// enable versioning based on tags, see https://git-scm.com/docs/git-describe
+// requires a full repo clone on the continuous integration machine (not a shallow clone)
 enablePlugins(GitVersioning)
 git.useGitDescribe := true
 
@@ -36,7 +39,8 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
 /*
  * scalac configuration
  */
-
+// Use the same scala version Spark is build with, see scala.version in
+// https://github.com/apache/spark/blob/master/pom.xml
 scalaVersion in ThisBuild := "2.11.8"
 
 compileOrder := CompileOrder.JavaThenScala
@@ -49,14 +53,16 @@ lazy val root = Project("root", file("."))
   .settings(
     buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
   )
+// more memory Spark in local mode, see https://github.com/holdenk/spark-testing-base
+javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
 
 val commonScalacOptions = Seq(
   "-encoding",
   "UTF-8", // Specify character encoding used by source files
   "-target:jvm-1.8", // Target platform for object files
   "-Xexperimental", // Enable experimental extensions
-  "-Xfuture", // Turn on future language features
-  "-Ybackend:GenBCode" // Choice of bytecode emitter
+  "-Xfuture" // Turn on future language features
+//"-Ybackend:GenBCode" // Choice of bytecode emitter
 )
 
 val compileScalacOptions = Seq(
@@ -100,7 +106,11 @@ scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
 
 scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
 
-addCompilerPlugin("org.scalamacros" % "paradise" % "2.1.0" cross CrossVersion.full)
+// Have fullClasspath during compile, test and run, but don't assemble what is marked provided
+// https://github.com/sbt/sbt-assembly#-provided-configuration
+run in Compile := Defaults
+  .runTask(fullClasspath in Compile, mainClass in (Compile, run), runner in (Compile, run))
+  .evaluated
 
 /*
 scalac -language:help
@@ -156,48 +166,27 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 /*
  * Managed dependencies
  */
+val sparkVersion           = "2.2.0"
+val clusterDependencyScope = "provided"
 
 libraryDependencies ++= Seq(
-  "commons-codec"          % "commons-codec"        % "1.10",
-  "commons-io"             % "commons-io"           % "2.5",
-  "commons-validator"      % "commons-validator"    % "1.5.1",
-  "joda-time"              % "joda-time"            % "2.9.6",
-  "mysql"                  % "mysql-connector-java" % "6.0.5",
-  "ch.qos.logback"         % "logback-classic"      % "1.1.7",
-  "com.github.nscala-time" %% "nscala-time"         % "2.14.0"
-//"com.github.pathikrit"             %% "better-files"                     % "2.16.0" // No 2.12
-  ,
-  "com.github.t3hnar"          %% "scala-bcrypt"     % "3.0",
-  "com.google.guava"           % "guava"             % "20.0",
-  "com.ibm.icu"                % "icu4j"             % "58.1",
-  "com.softwaremill.macwire"   %% "macros"           % "2.2.5" % Provided,
-  "com.softwaremill.macwire"   %% "proxy"            % "2.2.5",
-  "com.softwaremill.macwire"   %% "util"             % "2.2.5",
-  "com.softwaremill.quicklens" %% "quicklens"        % "1.4.8",
-  "com.typesafe"               % "config"            % "1.3.1",
-  "com.typesafe.scala-logging" %% "scala-logging"    % "3.5.0",
-  "com.typesafe.slick"         %% "slick"            % "3.2.0-M2",
-  "com.typesafe.slick"         %% "slick-hikaricp"   % "3.2.0-M2",
-  "com.univocity"              % "univocity-parsers" % "2.2.3",
-  "de.svenkubiak"              % "jBCrypt"           % "0.4.1",
-  "org.apache.commons"         % "commons-compress"  % "1.12",
-  "org.apache.commons"         % "commons-csv"       % "1.4",
-  "org.apache.commons"         % "commons-lang3"     % "3.5",
-  "org.apache.commons"         % "commons-math3"     % "3.6.1",
-  "org.apache.httpcomponents"  % "httpclient"        % "4.5.2",
-  "org.joda"                   % "joda-money"        % "0.12",
-  "org.jsoup"                  % "jsoup"             % "1.10.1",
-  "org.postgresql"             % "postgresql"        % "9.4.1212",
-  "org.quartz-scheduler"       % "quartz"            % "2.2.3",
-  "org.quartz-scheduler"       % "quartz-jobs"       % "2.2.3",
-  "org.scala-lang"             % "scala-reflect"     % scalaVersion.value,
-  "org.scalactic"              %% "scalactic"        % "3.0.1"
-)
+  "org.apache.spark" %% "spark-core" % sparkVersion % clusterDependencyScope,
+  "org.apache.spark" %% "spark-sql"  % sparkVersion % clusterDependencyScope,
+  // "org.apache.hadoop"          % "hadoop-aws"     % "2.7.3" % clusterDependencyScope,
+  "org.apache.hadoop"          % "hadoop-client"  % "2.7.3" % clusterDependencyScope,
+  "org.slf4j"                  % "slf4j-log4j12"  % "1.7.25",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
+  "org.rogach"                 %% "scallop"       % "3.1.0"
+).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.mockito"             % "mockito-core"  % "2.2.29",
-  "org.scalatest"           %% "scalatest"    % "3.0.1",
-  "org.seleniumhq.selenium" % "selenium-java" % "3.0.1"
+  "org.scalatest"    %% "scalatest"          % "3.0.4",
+  "com.holdenkarau"  %% "spark-testing-base" % "2.2.0_0.7.2",
+  "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
+  // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
+  // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
+  // "com.storm-enroute" %% "scalameter"                  % "0.8.2",
+  // "es.ucm.fdi"        %% "sscheck"                     % "0.3.2",
 ) map (_ % Test)
 
 /*
@@ -210,6 +199,10 @@ addCommandAlias("pluginUpdates", "; reload plugins; dependencyUpdates; reload re
 // Statements executed when starting the Scala REPL (sbt's `console` task)
 initialCommands := """
 import
+  project.Functions._,
+  project.Processing,
+  project.Steps,
+  org.apache.spark.sql.SparkSession,
   scala.annotation.{switch, tailrec},
   scala.beans.{BeanProperty, BooleanBeanProperty},
   scala.collection.JavaConverters._,
@@ -226,8 +219,10 @@ import
   java.net._,
   java.nio.file._,
   java.time.{Duration => jDuration, _},
-  System.{currentTimeMillis => now},
-  System.nanoTime
+  java.lang.System.{currentTimeMillis => now},
+  java.lang.System.nanoTime
+
+val sparkNodes = sys.env.getOrElse("SPARK_NODES", "local[*]")
 
 def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
   import c.universe._, scala.io.AnsiColor.{BOLD, GREEN, RESET}
@@ -240,6 +235,20 @@ def desugarImpl[T](c: blackbox.Context)(expr: c.Expr[T]): c.Expr[Unit] = {
 }
 
 def desugar[T](expr: T): Unit = macro desugarImpl[T]
+
+var _sparkInitialized = false
+@transient lazy val spark = {
+  _sparkInitialized = true
+  SparkSession.builder
+    .master(sparkNodes)
+    .appName("Console test")
+    .getOrCreate()
+}
+@transient lazy val sc = spark.sparkContext
+"""
+
+cleanupCommands in console := """
+if (_sparkInitialized) {spark.stop()}
 """
 
 // Do not exit sbt when Ctrl-C is used to stop a running app
@@ -299,6 +308,8 @@ testScalastyle := scalastyle.in(Test).toTask("").value
  * sbt-assembly https://github.com/sbt/sbt-assembly
  */
 test in assembly := {}
+// scala-library is provided by spark cluster execution environment
+assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
 
 /*
  * WartRemover: http://github.com/wartremover/wartremover
@@ -501,7 +512,6 @@ scalacOptions += "-P:linter:enable-only:" +
 /*
  * scoverage: http://github.com/scoverage/sbt-scoverage
  */
-
 coverageMinimum := 90
 coverageFailOnMinimum := true
 coverageOutputCobertura := false

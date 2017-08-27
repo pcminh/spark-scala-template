@@ -1,9 +1,62 @@
-Scala Boilerplate
-=================
+Spark Scala Template
+====================
 
 [![Build Status](https://travis-ci.org/dbast/spark-scala-template.svg?branch=master)](https://travis-ci.org/dbast/spark-scala-template)
 
 Assortment of default settings, best practices, and general goodies for Scala projects.
+
+Layers
+------
+
+There are 3 layers:
+* The reusable shared DAG steps, implemented via (SQL like) Dataset API
+* The user defined functions used by the steps
+* A command with cli, that builds a whole DAG by combining steps
+
+The cli
+-------
+
+```
+-d, --debug                  Explains plan during DAG construction
+-i, --input  <arg>           Path to the raw data to process (local, hdfs, s3)
+-l, --limit  <arg>           Limit DAG steps to given number, the read and
+                             write/show steps are always added
+    --lines-to-show  <arg>   Amount of lines to shows to the console (instead
+                             of writing snappy compressed parquet files)
+-n, --nodes  <arg>           Spark nodes (local run) (default = local[*])
+-o, --output  <arg>          Output path (local, hdfs, s3)
+-s, --stop                   Stop the SparkSession after processing /
+                             exception (for cleanup during debugging)
+    --help                   Show help message
+```
+
+Testing
+-------
+
+There are several ways to test the code:
+* With local in memory cluster and included data, e.g.:
+  * A whole DAG `./sbt -i data/*.gz -o test`
+  * A reduced DAG `./sbt -i data/*.gz -o test --limit 1 --lines 2`
+* Sherlock Holmes mode: Start the scala console via `./sbt console`, there is a
+  preconfigured SparkSession named `spark` and all the Steps are imported.
+* Execute the automated tests via: `./sbt test` and `./sbt it:test`, or with
+  coverage report: `./sbt coverage test coverageReport`. The report can be found
+  in `target/scala-2.11/scoverage-report`.
+* Submitting a Spark job with any desired cli argument on a running cluster or
+  import the code into Apache Zeppelin and use it there.
+
+Releasing
+---------
+
+The versioning is done via Annotated Git Tags, see [git-describe](https://git-scm.com/docs/git-describe) and [Git-Basics-Tagging](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for annotated tags.
+
+Tags have to be pushed via `git push --tags`.
+
+This requires a full repo clone on the continuous integration machine (no shallow clone).
+
+The benefit of git describe based versioning is, that every commit has an distinct
+automatic version. This facilitates also continuous integration and delivery.
+
 
 sbt bash wrapper
 ----------------
@@ -82,7 +135,8 @@ Fills apiMappings for common Scala libraries during `doc` task.
 License
 -------
 
-Copyright 2011-2016 Marconi Lanna
+Copyright 2011-2016 Marconi Lanna  
+Copyright 2017 Daniel Bast
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

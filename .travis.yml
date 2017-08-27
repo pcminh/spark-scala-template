@@ -15,6 +15,7 @@ cache:
 
 script:
   - ./sbt test
+  - ./sbt it:test
 
   # Trick to avoid unnecessary cache updates
   - find $HOME/.sbt -name "*.lock" | xargs rm

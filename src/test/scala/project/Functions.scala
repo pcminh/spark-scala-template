@@ -1,5 +1,5 @@
 /*
- * Copyright 2012-2016 Marconi Lanna
+ * Copyright 2017 Daniel Bast
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,16 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package project
+import org.scalatest.{ FlatSpec }
+import project.Functions
 
-import org.scalatest.{ DiagrammedAssertions, FreeSpec, OptionValues, TryValues }
-import org.scalatest.concurrent.ScalaFutures
-import org.scalatest.mockito.MockitoSugar
+class keyValueStringToMapSpec extends FlatSpec {
+  val testData =
+    Seq(
+      ("1=2", Map("1"     -> "2")),
+      ("1=2&3=4", Map("1" -> "2", "3" -> "4")),
+      ("as&df", Map())
+    )
+  val sut = Functions.keyValueStringToMap _
 
-abstract class Spec
-    extends FreeSpec
-    with DiagrammedAssertions
-    with OptionValues
-    with TryValues
-    with ScalaFutures
-    with MockitoSugar
+  "a string" should "allways transform to a map" in {
+    testData.foreach { case (given, expected) => assert(sut(given) === expected) }
+  }
+}
