@@ -301,39 +301,43 @@ testScalastyle := scalastyle.in(Test).toTask("").value
 test in assembly := {}
 
 /*
- * WartRemover: http://github.com/puffnfresh/wartremover
+ * WartRemover: http://github.com/wartremover/wartremover
  */
 wartremoverErrors ++= Seq(
   Wart.Any,
+  Wart.ArrayEquals,
   Wart.AsInstanceOf,
-//Wart.DefaultArguments
+  Wart.DefaultArguments,
   Wart.EitherProjectionPartial,
-//Wart.Enumeration
-//Wart.Equals
+  Wart.Enumeration,
+//Wart.Equals,
   Wart.ExplicitImplicitTypes,
-  Wart.FinalCaseClass,
-//Wart.FinalVal
-//Wart.ImplicitConversion
+//Wart.FinalCaseClass,
+  Wart.FinalVal,
+  Wart.ImplicitConversion,
+//Wart.ImplicitParameter,
   Wart.IsInstanceOf,
   Wart.JavaConversions,
   Wart.LeakingSealed,
-//Wart.MutableDataStructures
-//Wart.NonUnitStatements
+  Wart.MutableDataStructures,
+//Wart.NonUnitStatements,
   Wart.Nothing,
   Wart.Null,
   Wart.Option2Iterable,
   Wart.OptionPartial,
-//Wart.Overloading
+  Wart.Overloading,
   Wart.Product,
+//Wart.PublicInference,
+//Wart.Recursion,
   Wart.Return,
   Wart.Serializable,
   Wart.StringPlusAny,
   Wart.Throw,
-//Wart.ToString
+  Wart.ToString,
   Wart.TraversableOps,
   Wart.TryPartial,
   Wart.Var,
-//Wart.While,
+  Wart.While,
   ContribWart.ExposedTuples,
   ContribWart.OldTime,
   ContribWart.SealedCaseClass,
