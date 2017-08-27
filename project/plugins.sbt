@@ -56,4 +56,8 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC1")
 //addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.0.1")
 
 // A git plugin for SBT https://github.com/sbt/sbt-git
-addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")
+addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.9.3")
+
+// disables warning: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+// as explained here https://github.com/sbt/sbt-git
+libraryDependencies += "org.slf4j" % "slf4j-nop" % "1.7.25"
