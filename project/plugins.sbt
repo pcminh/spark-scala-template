@@ -62,3 +62,6 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14-9")
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
 //addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.0.1")
+
+// A git plugin for SBT https://github.com/sbt/sbt-git
+addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")

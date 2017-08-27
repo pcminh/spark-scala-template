@@ -20,7 +20,8 @@
 
 name := "PROJECT"
 
-version := "0.1"
+enablePlugins(GitVersioning)
+git.useGitDescribe := true
 
 description := "PROJECT DESCRIPTION"
 
