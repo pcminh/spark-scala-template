@@ -29,7 +29,8 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
-addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
+// Disable until https://github.com/sksamuel/sbt-scapegoat/issues/47 is fixed
+// addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.4")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")

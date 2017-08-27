@@ -351,20 +351,19 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-
-scapegoatVersion := "1.3.0"
-scapegoatDisabledInspections := Seq.empty
-scapegoatIgnoredFiles := Seq.empty
-
+// scapegoatVersion := "1.3.0"
+// scapegoatDisabledInspections := Seq.empty
+// scapegoatIgnoredFiles := Seq.empty
+//
 // Create a default Scapegoat task to run with tests
-lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
-lazy val testScapegoat = taskKey[Unit]("testScapegoat")
-
-mainScapegoat := scapegoat.in(Compile).value
-testScapegoat := scapegoat.in(Test).value
-
-(test in Test) := ((test in Test) dependsOn testScapegoat).value
-(test in Test) := ((test in Test) dependsOn mainScapegoat).value
+// lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
+// lazy val testScapegoat = taskKey[Unit]("testScapegoat")
+//
+// mainScapegoat := scapegoat.in(Compile).value
+// testScapegoat := scapegoat.in(Test).value
+//
+// (test in Test) := ((test in Test) dependsOn testScapegoat).value
+// (test in Test) := ((test in Test) dependsOn mainScapegoat).value
 
 /*
  * Linter: http://github.com/HairyFotr/linter
