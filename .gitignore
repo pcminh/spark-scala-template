@@ -1,7 +1,10 @@
 # .gitignore
 
 # sbt
+project/project
+project/target
 target/
+.history
 
 # Java
 *.class

@@ -210,8 +210,10 @@ libraryDependencies ++= Seq(
  * sbt options
  */
 
-// Statements executed when starting the Scala REPL (sbt's `console` task)
+// Add task to check for sbt plugin updates
+addCommandAlias("pluginUpdates", "; reload plugins; dependencyUpdates; reload return")
 
+// Statements executed when starting the Scala REPL (sbt's `console` task)
 initialCommands := """
 import
   scala.annotation.{switch, tailrec},

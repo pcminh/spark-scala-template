@@ -46,7 +46,7 @@ Scalariform is provided as a convenience and starting point; it is not sufficien
 sbt-updates
 -----------
 
-There is a `dependencyUpdates` sbt task to check Maven repositories for dependency updates.
+There is a `dependencyUpdates` sbt task to check Maven repositories for dependency updates and a `pluginUpdates` task to check for sbt plugin updates.
 
 sbt-license-report
 ------------------
