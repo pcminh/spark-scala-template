@@ -254,9 +254,6 @@ if (_sparkInitialized) {spark.stop()}
 // Do not exit sbt when Ctrl-C is used to stop a running app
 cancelable in Global := true
 
-// Improved incremental compilation
-incOptions := incOptions.value.withNameHashing(true)
-
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
 
@@ -356,19 +353,19 @@ wartremoverErrors ++= Seq(
   Wart.TraversableOps,
   Wart.TryPartial,
   Wart.Var,
-  Wart.While,
-  ContribWart.ExposedTuples,
-  ContribWart.OldTime,
-  ContribWart.SealedCaseClass,
-  ContribWart.SomeApply,
-  ExtraWart.EnumerationPartial,
-  ExtraWart.FutureObject,
+  Wart.While
+//ContribWart.ExposedTuples,
+//ContribWart.OldTime,
+//ContribWart.SealedCaseClass,
+//ContribWart.SomeApply,
+//ExtraWart.EnumerationPartial,
+//ExtraWart.FutureObject,
 //ExtraWart.GenMapLikePartial,
-  ExtraWart.GenTraversableLikeOps,
-  ExtraWart.GenTraversableOnceOps,
-  ExtraWart.ScalaGlobalExecutionContext,
-  ExtraWart.StringOpsPartial,
-  ExtraWart.TraversableOnceOps
+//ExtraWart.GenTraversableLikeOps,
+//ExtraWart.GenTraversableOnceOps,
+//ExtraWart.ScalaGlobalExecutionContext,
+//ExtraWart.StringOpsPartial,
+//ExtraWart.TraversableOnceOps
 )
 
 /*

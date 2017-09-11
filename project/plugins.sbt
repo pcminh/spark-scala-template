@@ -23,14 +23,14 @@ addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.2.0")
 
 // http://github.com/wartremover/wartremover-contrib/
-addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
+// addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.0.0")
 
 // http://github.com/danielnixon/extrawarts
-addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
+// addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "0.3.0")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
-addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.5")
+addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.7")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
@@ -50,7 +50,7 @@ addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.7.0")
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")
 
 // http://github.com/sbt/sbt-license-report
-addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
+// addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
@@ -64,11 +64,11 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.2")
 
 // Adds a `ensimeConfig` task to generate ensime project definitions
 // http://ensime.org/build_tools/sbt/
-addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.14")
+// addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.14")
 
 // A Sbt plugin that fills apiMappings for common Scala libraries.
 // https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
-addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "1.1.0")
+addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "2.0.0")
 
 // A git plugin for SBT https://github.com/sbt/sbt-git
 addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.9.3")
