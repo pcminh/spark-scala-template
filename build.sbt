@@ -310,6 +310,14 @@ testScalastyle := scalastyle.in(Test).toTask("").value
 test in assembly := {}
 // scala-library is provided by spark cluster execution environment
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+assemblyExcludedJars in assembly := {
+  val cp = (fullClasspath in assembly).value
+  // exclude the scapegoat plugin that is sneaking into the assembled jar
+  // until https://github.com/sksamuel/sbt-scapegoat/issues/47 is fixed
+  cp filter { f =>
+    f.data.getName.matches("scalac-scapegoat-plugin.*\\.jar")
+  }
+}
 
 /*
  * WartRemover: http://github.com/wartremover/wartremover
@@ -366,19 +374,19 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-// scapegoatVersion := "1.3.0"
-// scapegoatDisabledInspections := Seq.empty
-// scapegoatIgnoredFiles := Seq.empty
-//
+scapegoatVersion in ThisBuild := "1.3.2"
+scapegoatDisabledInspections := Seq.empty
+scapegoatIgnoredFiles := Seq.empty
+
 // Create a default Scapegoat task to run with tests
-// lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
-// lazy val testScapegoat = taskKey[Unit]("testScapegoat")
-//
-// mainScapegoat := scapegoat.in(Compile).value
-// testScapegoat := scapegoat.in(Test).value
-//
-// (test in Test) := ((test in Test) dependsOn testScapegoat).value
-// (test in Test) := ((test in Test) dependsOn mainScapegoat).value
+lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
+lazy val testScapegoat = taskKey[Unit]("testScapegoat")
+
+mainScapegoat := scapegoat.in(Compile).value
+testScapegoat := scapegoat.in(Test).value
+
+(test in Test) := ((test in Test) dependsOn testScapegoat).value
+(test in Test) := ((test in Test) dependsOn mainScapegoat).value
 
 /*
  * Linter: http://github.com/HairyFotr/linter
