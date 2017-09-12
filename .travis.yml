@@ -12,6 +12,7 @@ cache:
   directories:
     - $HOME/.ivy2
     - $HOME/.sbt/launchers
+    - $HOME/.coursier
 
 script:
   - ./sbt test
