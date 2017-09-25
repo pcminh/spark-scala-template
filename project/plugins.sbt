@@ -50,7 +50,7 @@ addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.7.0")
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")
 
 // http://github.com/sbt/sbt-license-report
-// addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
+addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
@@ -64,7 +64,7 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.2")
 
 // Adds a `ensimeConfig` task to generate ensime project definitions
 // http://ensime.org/build_tools/sbt/
-// addSbtPlugin("org.ensime" % "sbt-ensime" % "1.12.14")
+addSbtPlugin("org.ensime" % "sbt-ensime" % "2.0.1")
 
 // A Sbt plugin that fills apiMappings for common Scala libraries.
 // https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
