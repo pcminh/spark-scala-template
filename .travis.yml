@@ -6,6 +6,11 @@ scala:
 dist: trusty
 sudo: false
 
+addons:
+  apt:
+    packages:
+      - shellcheck
+
 jdk:
   - openjdk8
 
@@ -16,8 +21,7 @@ cache:
     - $HOME/.coursier
 
 script:
-  - ./sbt test
-  - ./sbt it:test
+  - ./ci.sh
 
   # Trick to avoid unnecessary cache updates
   - find $HOME/.sbt -name "*.lock" | xargs rm
