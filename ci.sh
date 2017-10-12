@@ -9,11 +9,17 @@ echo "Executing self-check"
 # Don't fail here, failing later at the end when all shell scripts are checked anyway.
 shellcheck ./ci.sh && echo "Self-check succeeded!" || echo "Self-check failed!"
 
+echo "Cleaning"
+./sbt clean
+
 echo "Executing unit tests"
-./sbt test
+./sbt coverage test
 
 echo "Executing integration tests"
-./sbt it:test
+./sbt coverage it:test
+
+echo "Generating combined coverage report"
+./sbt coverageReport
 
 echo "Executing shellcheck against all included shell scripts"
 find . -name "*.sh" -print0 | xargs -n 1 -0 shellcheck

@@ -518,10 +518,10 @@ scalacOptions += "-P:linter:enable-only:" +
  * scoverage: http://github.com/scoverage/sbt-scoverage
  */
 coverageMinimum := 90
-coverageFailOnMinimum := true
-coverageOutputCobertura := false
+coverageFailOnMinimum := false
+coverageOutputCobertura := true
 coverageOutputHTML := true
-coverageOutputXML := false
+coverageOutputXML := true
 
 /*
  * Scalafmt: http://github.com/lucidsoftware/neo-sbt-scalafmt
