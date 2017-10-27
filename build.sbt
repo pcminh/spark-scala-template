@@ -172,8 +172,10 @@ val clusterDependencyScope = "provided"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion % clusterDependencyScope,
   "org.apache.spark" %% "spark-sql"  % sparkVersion % clusterDependencyScope,
+  // "org.typelevel"             %% "frameless-dataset" % "0.4.0",
   // "org.apache.hadoop"          % "hadoop-aws"     % "2.7.3" % clusterDependencyScope,
   // "org.apache.hadoop"          % "hadoop-client"  % "2.7.3" % clusterDependencyScope,
+  //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.25",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2",
   "org.rogach"                 %% "scallop"       % "3.1.1"
@@ -181,7 +183,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scalatest"    %% "scalatest"          % "3.0.4",
-  "com.holdenkarau"  %% "spark-testing-base" % "2.2.0_0.7.4",
+  "com.holdenkarau"  %% "spark-testing-base" % "2.2.0_0.8.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
   // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
