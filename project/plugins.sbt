@@ -47,7 +47,7 @@ addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.3")
 addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.7.0")
 
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
-addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.5")
+addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")
 
 // http://github.com/sbt/sbt-license-report
 addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
@@ -60,7 +60,7 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-RC12")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
-addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.3")
+addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // Adds a `ensimeConfig` task to generate ensime project definitions
 // http://ensime.org/build_tools/sbt/
