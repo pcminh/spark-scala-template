@@ -355,19 +355,19 @@ wartremoverErrors ++= Seq(
   Wart.TraversableOps,
   Wart.TryPartial,
   Wart.Var,
-  Wart.While
-//ContribWart.ExposedTuples,
-//ContribWart.OldTime,
-//ContribWart.SealedCaseClass,
-//ContribWart.SomeApply,
-//ExtraWart.EnumerationPartial,
-//ExtraWart.FutureObject,
-//ExtraWart.GenMapLikePartial,
-//ExtraWart.GenTraversableLikeOps,
-//ExtraWart.GenTraversableOnceOps,
-//ExtraWart.ScalaGlobalExecutionContext,
-//ExtraWart.StringOpsPartial,
-//ExtraWart.TraversableOnceOps
+  Wart.While,
+  ContribWart.ExposedTuples,
+  ContribWart.OldTime,
+  ContribWart.SealedCaseClass,
+  ContribWart.SomeApply,
+  ExtraWart.EnumerationPartial,
+  ExtraWart.FutureObject,
+  ExtraWart.GenMapLikePartial,
+  ExtraWart.GenTraversableLikeOps,
+  ExtraWart.GenTraversableOnceOps,
+  ExtraWart.ScalaGlobalExecutionContext,
+  ExtraWart.StringOpsPartial,
+  ExtraWart.TraversableOnceOps
 )
 
 /*
