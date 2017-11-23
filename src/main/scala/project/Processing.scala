@@ -74,8 +74,9 @@ class Processing(spark: SparkSession) extends LazyLogging {
 class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
   appendDefaultToDescription = true
   val nodes = opt[String](descr = "Spark nodes (local run)", default = Option("local[*]"))
-  val stop = opt[Boolean](
-    descr = "Stop the SparkSession after processing / exception (for cleanup during debugging)",
+  val stay = opt[Boolean](
+    descr =
+      "Wait for key press to exit (to keep SparkSession and webserver running while debugging)",
     default = Option(false)
   )
 
@@ -125,6 +126,12 @@ object Processing extends LazyLogging {
                          limit = conf.limit.toOption,
                          lines = conf.linesToShow.toOption,
                          debug = conf.debug())
-    } finally { if (conf.stop()) { spark.stop() } }
+    } finally {
+      if (conf.stay()) {
+        println("Waiting: press enter to exit")
+        println(System.in.read())
+      }
+      spark.stop()
+    }
   }
 }

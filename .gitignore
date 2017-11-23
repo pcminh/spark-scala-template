@@ -51,3 +51,6 @@ tmp/
 # Windows
 Desktop.ini
 Thumbs.db
+
+# Test output directory
+test/
