@@ -27,8 +27,8 @@ The cli
                              of writing snappy compressed parquet files)
 -n, --nodes  <arg>           Spark nodes (local run) (default = local[*])
 -o, --output  <arg>          Output path (local, hdfs, s3)
--s, --stop                   Stop the SparkSession after processing /
-                             exception (for cleanup during debugging)
+-s, --stay                   Wait for key press to exit (to keep SparkSession
+                             and webserver running while debugging)
     --help                   Show help message
 ```
 
