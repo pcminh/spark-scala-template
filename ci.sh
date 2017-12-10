@@ -6,33 +6,57 @@ set -o errtrace -o nounset -o pipefail -o errexit
 cd "$(dirname "${BASH_SOURCE[0]}")"
 
 self_check () {
-  echo "Executing self-check"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Self-check                        #"
+  echo "#                                          #"
+  echo "############################################"
   # Don't fail here, failing later at the end when all shell scripts are checked anyway.
   shellcheck ./ci.sh && echo "Self-check succeeded!" || echo "Self-check failed!"
 }
 
 cleaning () {
-  echo "Cleaning"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Cleaning                          #"
+  echo "#                                          #"
+  echo "############################################"
   ./sbt clean
 }
 
 unit_tests () {
-  echo "Executing unit tests"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Unit testing                      #"
+  echo "#                                          #"
+  echo "############################################"
   ./sbt coverage test
 }
 
 integration_tests () {
-  echo "Executing integration tests"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Integration testing               #"
+  echo "#                                          #"
+  echo "############################################"
   ./sbt coverage it:test
 }
 
 coverage_report () {
-  echo "Generating combined coverage report"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Coverage report                   #"
+  echo "#                                          #"
+  echo "############################################"
   ./sbt coverageReport
 }
 
 shell_check () {
-  echo "Executing shellcheck against all included shell scripts"
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Shellcheck                        #"
+  echo "#                                          #"
+  echo "############################################"
   find . -name "*.sh" -print0 | xargs -n 1 -0 shellcheck
 }
 
