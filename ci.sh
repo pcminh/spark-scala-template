@@ -51,6 +51,24 @@ coverage_report () {
   ./sbt coverageReport
 }
 
+generate_api_doc() {
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Generating API documentaion       #"
+  echo "#                                          #"
+  echo "############################################"
+  ./sbt doc
+}
+
+dependency_info() {
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Dependency information            #"
+  echo "#                                          #"
+  echo "############################################"
+  ./sbt dependencyUpdates pluginUpdates coursierDependencyTree
+}
+
 shell_check () {
   echo "############################################"
   echo "#                                          #"
@@ -60,9 +78,21 @@ shell_check () {
   find . -name "*.sh" -print0 | xargs -n 1 -0 shellcheck
 }
 
+assemble() {
+  echo "############################################"
+  echo "#                                          #"
+  echo "#        Assembling binary artifact        #"
+  echo "#                                          #"
+  echo "############################################"
+  ./sbt assembly
+}
+
 self_check
 cleaning
 unit_tests
 integration_tests
 coverage_report
+generate_api_doc
+dependency_info
 shell_check
+assemble
