@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  */
 // Use the same scala version Spark is build with, see scala.version in
 // https://github.com/apache/spark/blob/master/pom.xml
-scalaVersion in ThisBuild := "2.11.8"
+scalaVersion in ThisBuild := "2.11.12"
 
 compileOrder := CompileOrder.JavaThenScala
 
