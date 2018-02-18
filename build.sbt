@@ -373,7 +373,7 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-scapegoatVersion in ThisBuild := "1.3.3"
+scapegoatVersion in ThisBuild := "1.3.4"
 scapegoatDisabledInspections := Seq.empty
 scapegoatIgnoredFiles := Seq.empty
 
