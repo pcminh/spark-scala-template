@@ -309,14 +309,6 @@ testScalastyle := scalastyle.in(Test).toTask("").value
 test in assembly := {}
 // scala-library is provided by spark cluster execution environment
 assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
-assemblyExcludedJars in assembly := {
-  val cp = (fullClasspath in assembly).value
-  // exclude the scapegoat plugin that is sneaking into the assembled jar
-  // until https://github.com/sksamuel/sbt-scapegoat/issues/47 is fixed
-  cp filter { f =>
-    f.data.getName.matches("scalac-scapegoat-plugin.*\\.jar")
-  }
-}
 
 /*
  * WartRemover: http://github.com/wartremover/wartremover
