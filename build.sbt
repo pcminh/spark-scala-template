@@ -51,8 +51,9 @@ lazy val root = Project("root", file("."))
   .settings(Testing.settings)
   .enablePlugins(BuildInfoPlugin)
   .settings(
-    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
+    buildInfoKeys := BuildInfoKey.ofN(name, version, scalaVersion, sbtVersion)
   )
+
 // more memory Spark in local mode, see https://github.com/holdenk/spark-testing-base
 javaOptions ++= Seq("-Xms512M", "-Xmx2048M", "-XX:+CMSClassUnloadingEnabled")
 
