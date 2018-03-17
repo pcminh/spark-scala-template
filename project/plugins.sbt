@@ -64,7 +64,7 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // Adds a `ensimeConfig` task to generate ensime project definitions
 // http://ensime.org/build_tools/sbt/
-addSbtPlugin("org.ensime" % "sbt-ensime" % "2.1.0")
+addSbtPlugin("org.ensime" % "sbt-ensime" % "2.3.0")
 
 // A Sbt plugin that fills apiMappings for common Scala libraries.
 // https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
