@@ -24,7 +24,7 @@ class Processing(spark: SparkSession) extends LazyLogging {
 
   val steps = new Steps(spark)
 
-  val stepList = List(
+  val dagSteps = Vector(
     steps.decodeData _,
     steps.selectFinalFields _
   )
@@ -39,7 +39,7 @@ class Processing(spark: SparkSession) extends LazyLogging {
     val rawData = steps.read(input)
     logger.debug(s"The schema is now: ${rawData.schema.treeString}")
 
-    val fullData = combineSteps(stepList, rawData, stepLimit = limit, debug)
+    val fullData = combineSteps(dagSteps, rawData, stepLimit = limit, debug)
     steps.writeOrShowData(fullData, output, linesToShow = lines)
     logger.info("Finished processing")
   }
@@ -47,17 +47,17 @@ class Processing(spark: SparkSession) extends LazyLogging {
   /**
     * Combines list of steps and print
     *
-    * @param stepList The list of steps
+    * @param dagSteps The dag steps to combine
     * @param df The input Dataframe
     * @param limit If set, Limits amount of combined steps to given number
     * @param debug If true, prints the physical and logical plan
     */
-  def combineSteps(stepList: List[Dataset[Row] => Dataset[Row]],
+  def combineSteps(dagSteps: Vector[Dataset[Row] => Dataset[Row]],
                    df: Dataset[Row],
                    stepLimit: Option[Int],
                    debug: Boolean) =
-    stepList
-      .slice(0, stepLimit.getOrElse(stepList.size))
+    dagSteps
+      .slice(0, stepLimit.getOrElse(dagSteps.size))
       .foldLeft(df)((dataframe, step) => {
         val rf = step(dataframe)
         logger.debug(s"The schema is now: ${rf.schema.treeString}")
@@ -128,8 +128,8 @@ object Processing extends LazyLogging {
                          debug = conf.debug())
     } finally {
       if (conf.stay()) {
-        println("Waiting: press enter to exit")
-        println(System.in.read())
+        logger.info("Waiting: press enter to exit")
+        logger.info(System.in.read().toString)
       }
       spark.stop()
     }

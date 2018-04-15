@@ -26,7 +26,7 @@ class ProcessingTest extends FunSuite with DataFrameSuiteBase {
 
     val dag = new Processing(spark)
 
-    val steps = dag.stepList
+    val steps = dag.dagSteps
 
     val rawData  = dag.steps.read(input)
     val fullData = dag.combineSteps(steps, rawData, stepLimit, debug)

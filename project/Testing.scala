@@ -41,7 +41,7 @@ object Testing {
   )
 
   val settings = testSettings ++ itSettings ++ e2eSettings ++ Seq(
-    testAll := (),
+    testAll := (()),
     testAll := testAll.dependsOn(test in EndToEndTest).value,
     testAll := testAll.dependsOn(test in IntegrationTest).value,
     testAll := testAll.dependsOn(test in Test).value
