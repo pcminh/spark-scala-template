@@ -137,8 +137,8 @@ Fills apiMappings for common Scala libraries during `doc` task.
 License
 -------
 
-Copyright 2011-2016 Marconi Lanna  
-Copyright 2017 Daniel Bast
+Copyright 2011-2017 Marconi Lanna
+Copyright 2017-2018 Daniel Bast
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
