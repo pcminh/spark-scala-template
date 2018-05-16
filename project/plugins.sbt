@@ -44,7 +44,7 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.15")
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.3.4")
 
 // https://github.com/sbt/sbt-buildinfo
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.8.0")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.9.0")
 
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.14.6")
@@ -71,7 +71,7 @@ addSbtPlugin("org.ensime" % "sbt-ensime" % "2.5.1")
 addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "2.0.2")
 
 // A git plugin for SBT https://github.com/sbt/sbt-git
-addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.9.3")
+addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.0")
 
 // disables warning: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 // as explained here https://github.com/sbt/sbt-git
