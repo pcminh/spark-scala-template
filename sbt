@@ -30,6 +30,7 @@
 
 # A more capable sbt runner, coincidentally also called sbt.
 # Author: Paul Phillips <paulp@improving.org>
+export TERM=xterm-color
 
 set -o pipefail
 
