@@ -3,8 +3,7 @@ language: scala
 scala:
   - 2.11.8
 
-dist: trusty
-sudo: false
+dist: xenial
 
 addons:
   apt:
@@ -16,16 +15,20 @@ jdk:
 
 cache:
   directories:
-    - $HOME/.ivy2
-    - $HOME/.sbt/launchers
-    - $HOME/.coursier
+    - $HOME/.cache/coursier/
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt
 
 script:
   - ./ci.sh
 
-  # Trick to avoid unnecessary cache updates
-  - find $HOME/.sbt -name "*.lock" | xargs rm
-  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+before_cache:
+  # Cleanup the cached directories to avoid unnecessary cache updates
+  - du -h -s $HOME/.ivy2/ $HOME/.sbt/ $HOME/.cache/coursier/
+  - find $HOME/.sbt -name "*.lock" -type f -delete
+  - rm -fv $HOME/.ivy2/.sbt.ivy.lock
+  - find $HOME/.ivy2/cache -name "ivydata-*.properties" -type f -delete
+  - find $HOME/.cache/coursier -name "*.lock" -type f -delete
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
