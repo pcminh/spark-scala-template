@@ -20,7 +20,7 @@
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 
 // http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.1")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.2")
 
 // http://github.com/wartremover/wartremover-contrib/
 addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.3.1")
@@ -33,7 +33,7 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
 
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.5.1")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
 
 // Adds a `scalafmt` task for automatic source code formatting
 // https://github.com/lucidsoftware/neo-sbt-scalafmt
