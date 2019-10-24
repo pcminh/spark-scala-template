@@ -41,7 +41,7 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.15")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.4.3")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.0")
 
 // https://github.com/sbt/sbt-buildinfo
 addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.9.0")
