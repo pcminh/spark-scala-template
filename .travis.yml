@@ -20,6 +20,7 @@ cache:
     - $HOME/.sbt
 
 script:
+  - find . -name "*.sh" -print0 | xargs -n 1 -0 shellcheck
   - ./ci.sh
 
 before_cache:
