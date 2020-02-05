@@ -15,10 +15,10 @@
  */
 import project.Processing
 import com.holdenkarau.spark.testing.DataFrameSuiteBase
-import org.scalatest.FunSuite
+import org.scalatest.funsuite.AnyFunSuite
 
 @SuppressWarnings(Array("org.wartremover.warts.Nothing"))
-class ProcessingTest extends FunSuite with DataFrameSuiteBase {
+class ProcessingTest extends AnyFunSuite with DataFrameSuiteBase {
   test("the whole Processing DAG") {
     val input                  = "./data/*.gz"
     val stepLimit: Option[Int] = None

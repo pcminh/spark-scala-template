@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import org.scalatest.{ FlatSpec }
+import org.scalatest.flatspec.{ AnyFlatSpec }
 import project.Functions
 
-class keyValueStringToMapSpec extends FlatSpec {
+class keyValueStringToMapSpec extends AnyFlatSpec {
   val testData =
     Seq(
       ("1=2", Map("1"     -> "2")),

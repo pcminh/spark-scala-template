@@ -177,13 +177,13 @@ libraryDependencies ++= Seq(
   // "org.apache.hadoop"          % "hadoop-aws"     % "2.7.3" % clusterDependencyScope,
   // "org.apache.hadoop"          % "hadoop-client"  % "2.7.3" % clusterDependencyScope,
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
-  "org.slf4j"                  % "slf4j-log4j12"  % "1.7.28",
+  "org.slf4j"                  % "slf4j-log4j12"  % "1.7.30",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "org.rogach"                 %% "scallop"       % "3.3.1"
+  "org.rogach"                 %% "scallop"       % "3.3.2"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.scalatest"    %% "scalatest"          % "3.0.8",
+  "org.scalatest"    %% "scalatest"          % "3.1.0",
   "com.holdenkarau"  %% "spark-testing-base" % "2.4.3_0.12.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
