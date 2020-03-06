@@ -167,7 +167,7 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 /*
  * Managed dependencies
  */
-val sparkVersion           = "2.4.4"
+val sparkVersion           = "2.4.5"
 val clusterDependencyScope = "provided"
 
 libraryDependencies ++= Seq(
@@ -179,12 +179,12 @@ libraryDependencies ++= Seq(
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.30",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "org.rogach"                 %% "scallop"       % "3.3.2"
+  "org.rogach"                 %% "scallop"       % "3.4.0"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.scalatest"    %% "scalatest"          % "3.1.0",
-  "com.holdenkarau"  %% "spark-testing-base" % "2.4.3_0.12.0",
+  "org.scalatest"    %% "scalatest"          % "3.1.1",
+  "com.holdenkarau"  %% "spark-testing-base" % "2.4.5_0.14.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
   // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
