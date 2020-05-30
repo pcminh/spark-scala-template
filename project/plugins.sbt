@@ -30,7 +30,7 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 
 // http://github.com/sksamuel/scapegoat
 // http://github.com/sksamuel/sbt-scapegoat
-addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.0.9")
+addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.1.0")
 
 // http://github.com/scoverage/sbt-scoverage
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
@@ -61,10 +61,6 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.3")
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse
 addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
-
-// Adds a `ensimeConfig` task to generate ensime project definitions
-// http://ensime.org/build_tools/sbt/
-addSbtPlugin("org.ensime" % "sbt-ensime" % "2.5.1")
 
 // A Sbt plugin that fills apiMappings for common Scala libraries.
 // https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
