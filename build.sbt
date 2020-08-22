@@ -179,11 +179,11 @@ libraryDependencies ++= Seq(
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.30",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "org.rogach"                 %% "scallop"       % "3.4.0"
+  "org.rogach"                 %% "scallop"       % "3.5.1"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.scalatest"    %% "scalatest"          % "3.2.0",
+  "org.scalatest"    %% "scalatest"          % "3.2.2",
   "com.holdenkarau"  %% "spark-testing-base" % "2.4.5_0.14.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",

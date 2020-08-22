@@ -44,7 +44,7 @@ addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.15")
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.1")
 
 // https://github.com/sbt/sbt-buildinfo
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.9.0")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.10.0")
 
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "0.15.0")
