@@ -36,8 +36,8 @@ addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.1.0")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
 
 // Adds a `scalafmt` task for automatic source code formatting
-// https://github.com/lucidsoftware/neo-sbt-scalafmt
-addSbtPlugin("com.lucidchart" % "sbt-scalafmt-coursier" % "1.15")
+// https://scalameta.org/scalafmt/docs/installation.html
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.2")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
@@ -54,9 +54,6 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-license-report" % "1.2.0")
 
 // http://github.com/orrsella/sbt-stats
 addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.7")
-
-// http://github.com/alexarchambault/coursier
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.3")
 
 // Creates Eclipse project definitions (.classpath, .project, .settings/)
 // http://github.com/typesafehub/sbteclipse

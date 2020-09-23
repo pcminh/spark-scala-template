@@ -27,7 +27,6 @@ import Functions._
   * functions from [[org.apache.spark.sql.functions]] and user defined functions
   * from [[Functions]]. There shall be no complicated scala stuff in this class,
   * to make this readable and reviewable for everyone understanding SQL.
-  *
   */
 class Steps(spark: SparkSession) extends LazyLogging {
   import spark.implicits._

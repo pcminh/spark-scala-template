@@ -56,7 +56,7 @@ dependency_info() {
   echo "#        Dependency information            #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt dependencyUpdates pluginUpdates coursierDependencyTree
+  ./sbt dependencyUpdates pluginUpdates dependencyTree
 }
 
 assemble() {

@@ -260,9 +260,6 @@ cancelable in Global := true
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
 
-showSuccess := true
-showTiming := true
-
 // Uncomment to enable offline mode
 // offline := true
 
@@ -281,11 +278,6 @@ triggeredMessage := { ws =>
     val ls = System.lineSeparator * 2
     ls + "#" * 100 + ls
   } else { "" }
-}
-
-shellPrompt := { state =>
-  import scala.Console.{ BLUE, BOLD, RESET }
-  s"$BLUE$BOLD${name.value}$RESET $BOLD\u25b6$RESET "
 }
 
 /*
@@ -523,8 +515,6 @@ coverageOutputXML := true
  */
 scalafmtConfig in ThisBuild := baseDirectory.value / "project" / "scalafmt.conf"
 scalafmtOnCompile in ThisBuild := true
-scalafmtVersion := "1.4.0"
-inConfig(IntegrationTest)(scalafmtSettings)
 
 /*
  * Scaladoc options

@@ -35,7 +35,7 @@ object Functions extends LazyLogging {
     *
     * @param ks A string like `key1=value1&key2=value2&key3=value3&...`
     * @return `Map("key1" -> "value1", "key2" -> "value2", ...)` or empty Map
-              in case of a non parseable string.
+    *              in case of a non parseable string.
     */
   def keyValueStringToMap(ks: String): Map[String, String] =
     Option(ks)

@@ -29,11 +29,13 @@ class Processing(spark: SparkSession) extends LazyLogging {
     steps.selectFinalFields _
   )
 
-  def process(input: String,
-              output: String,
-              limit: Option[Int],
-              lines: Option[Int],
-              debug: Boolean): Unit = {
+  def process(
+      input: String,
+      output: String,
+      limit: Option[Int],
+      lines: Option[Int],
+      debug: Boolean
+  ): Unit = {
     logger.info("Starting processing")
 
     val rawData = steps.read(input)
@@ -52,18 +54,20 @@ class Processing(spark: SparkSession) extends LazyLogging {
     * @param limit If set, Limits amount of combined steps to given number
     * @param debug If true, prints the physical and logical plan
     */
-  def combineSteps(dagSteps: Vector[Dataset[Row] => Dataset[Row]],
-                   df: Dataset[Row],
-                   stepLimit: Option[Int],
-                   debug: Boolean) =
+  def combineSteps(
+      dagSteps: Vector[Dataset[Row] => Dataset[Row]],
+      df: Dataset[Row],
+      stepLimit: Option[Int],
+      debug: Boolean
+  ) =
     dagSteps
       .slice(0, stepLimit.getOrElse(dagSteps.size))
-      .foldLeft(df)((dataframe, step) => {
+      .foldLeft(df) { (dataframe, step) =>
         val rf = step(dataframe)
         logger.debug(s"The schema is now: ${rf.schema.treeString}")
         if (debug) rf.explain(true)
         rf
-      })
+      }
 }
 
 /**
@@ -120,13 +124,14 @@ object Processing extends LazyLogging {
       .getOrCreate()
 
     val processing = new Processing(spark)
-    try {
-      processing.process(input = conf.input(),
-                         output = conf.output(),
-                         limit = conf.limit.toOption,
-                         lines = conf.linesToShow.toOption,
-                         debug = conf.debug())
-    } finally {
+    try processing.process(
+      input = conf.input(),
+      output = conf.output(),
+      limit = conf.limit.toOption,
+      lines = conf.linesToShow.toOption,
+      debug = conf.debug()
+    )
+    finally {
       if (conf.stay()) {
         logger.info("Waiting: press enter to exit")
         logger.info(System.in.read().toString)

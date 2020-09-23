@@ -19,7 +19,7 @@ import project.Functions
 class keyValueStringToMapSpec extends AnyFlatSpec {
   val testData =
     Seq(
-      ("1=2", Map("1"     -> "2")),
+      ("1=2", Map("1" -> "2")),
       ("1=2&3=4", Map("1" -> "2", "3" -> "4")),
       ("as&df", Map())
     )
