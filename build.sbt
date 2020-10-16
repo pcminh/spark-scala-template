@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  */
 // Use the same scala version Spark is build with, see scala.version in
 // https://github.com/apache/spark/blob/master/pom.xml
-scalaVersion in ThisBuild := "2.11.12"
+scalaVersion in ThisBuild := "2.12.11"
 
 compileOrder := CompileOrder.JavaThenScala
 
@@ -71,22 +71,22 @@ val compileScalacOptions = Seq(
   "-feature", // Emit warning and location for usages of features that should be imported explicitly
   "-g:vars",  // Set level of generated debugging info: none, source, line, vars, notailcalls
 //"-language:_" // Enable or disable language features (see list below)
-  "-optimise",  // Generates faster bytecode by applying optimisations to the program
+//"-optimise",  // Generates faster bytecode by applying optimisations to the program
   "-unchecked", // Enable additional warnings where generated code depends on assumptions
 //"-Xdev" // Indicates user is a developer - issue warnings about anything which seems amiss
   "-Xfatal-warnings", // Fail the compilation if there are any warnings
   "-Xlint:_", // Enable or disable specific warnings (see list below)
   "-Xstrict-inference", // Don't infer known-unsound types
-  "-Yclosure-elim", // Perform closure elimination
-  "-Yconst-opt", // Perform optimization with constant values
-  "-Ydead-code", // Perform dead code elimination
-  "-Yinline", // Perform inlining when possible
-  "-Yinline-handlers", // Perform exception handler inlining when possible
-  "-Yinline-warnings", // Emit inlining warnings
+//"-Yclosure-elim", // Perform closure elimination
+//"-Yconst-opt", // Perform optimization with constant values
+//"-Ydead-code", // Perform dead code elimination
+//"-Yinline", // Perform inlining when possible
+// "-Yinline-handlers", // Perform exception handler inlining when possible
+//"-Yinline-warnings", // Emit inlining warnings
   "-Yno-adapted-args", // Do not adapt an argument list to match the receiver
 //"-Yno-imports" // Compile without importing scala.*, java.lang.*, or Predef
 //"-Yno-predef" // Compile without importing Predef
-  "-Yopt:_", // Enable optimizations (see list below)
+//"-Yopt:_", // Enable optimizations (see list below)
   "-Ywarn-dead-code", // Warn when dead code is identified
   "-Ywarn-numeric-widen", // Warn when numerics are widened
   "-Ywarn-unused", // Warn when local and private vals, vars, defs, and types are unused
@@ -167,7 +167,7 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 /*
  * Managed dependencies
  */
-val sparkVersion           = "2.4.5"
+val sparkVersion           = "3.0.1"
 val clusterDependencyScope = "provided"
 
 libraryDependencies ++= Seq(
@@ -184,7 +184,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scalatest"    %% "scalatest"          % "3.2.2",
-  "com.holdenkarau"  %% "spark-testing-base" % "2.4.5_0.14.0",
+  "com.holdenkarau"  %% "spark-testing-base" % "3.0.1_1.0.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
   // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
