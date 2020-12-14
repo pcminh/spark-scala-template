@@ -179,7 +179,7 @@ libraryDependencies ++= Seq(
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.30",
   "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "org.rogach"                 %% "scallop"       % "3.5.1"
+  "org.rogach"                 %% "scallop"       % "4.0.0"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
