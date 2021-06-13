@@ -11,7 +11,7 @@ cleaning () {
   echo "#        Cleaning                          #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client clean
+  ./sbt clean
 }
 
 unit_tests () {
@@ -20,7 +20,7 @@ unit_tests () {
   echo "#        Unit testing                      #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client coverage test
+  ./sbt coverage test
 }
 
 integration_tests () {
@@ -29,7 +29,7 @@ integration_tests () {
   echo "#        Integration testing               #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client coverage it:test
+  ./sbt coverage it:test
 }
 
 coverage_report () {
@@ -38,7 +38,7 @@ coverage_report () {
   echo "#        Coverage report                   #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client coverageReport
+  ./sbt coverageReport
 }
 
 generate_api_doc() {
@@ -47,7 +47,7 @@ generate_api_doc() {
   echo "#        Generating API documentaion       #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client doc
+  ./sbt doc
 }
 
 dependency_info() {
@@ -56,7 +56,7 @@ dependency_info() {
   echo "#        Dependency information            #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client dependencyUpdates pluginUpdates dependencyTree
+  ./sbt dependencyUpdates pluginUpdates dependencyTree
 }
 
 assemble() {
@@ -65,7 +65,7 @@ assemble() {
   echo "#        Assembling binary artifact        #"
   echo "#                                          #"
   echo "############################################"
-  ./sbt --client assembly
+  ./sbt assembly
 }
 
 check_for_clean_worktree() {

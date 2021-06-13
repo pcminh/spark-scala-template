@@ -178,12 +178,12 @@ libraryDependencies ++= Seq(
   // "org.apache.hadoop"          % "hadoop-client"  % "2.7.3" % clusterDependencyScope,
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.30",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2",
-  "org.rogach"                 %% "scallop"       % "4.0.0"
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.3",
+  "org.rogach"                 %% "scallop"       % "4.0.3"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.scalatest"    %% "scalatest"          % "3.2.3",
+  "org.scalatest"    %% "scalatest"          % "3.2.9",
   "com.holdenkarau"  %% "spark-testing-base" % "3.0.1_1.0.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
@@ -358,7 +358,7 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-scapegoatVersion in ThisBuild := "1.3.8"
+scapegoatVersion in ThisBuild := "1.3.11"
 scapegoatDisabledInspections := Seq.empty
 scapegoatIgnoredFiles := Seq.empty
 
