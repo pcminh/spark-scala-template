@@ -45,6 +45,14 @@ tmp/
 ._*
 .DS_Store
 
+# metals
+.metals/
+.bloop/
+metals.sbt
+
+# vscode
+.vscode/
+
 # Windows
 Desktop.ini
 Thumbs.db
