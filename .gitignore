@@ -41,10 +41,6 @@ tmp/
 .settings/
 *.sc
 
-# Ensime
-.ensime
-.ensime_cache/
-
 # Mac OS X
 ._*
 .DS_Store

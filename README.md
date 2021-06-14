@@ -128,11 +128,6 @@ sbteclipse
 
 The `eclipse` sbt task to create Eclipse project definitions.
 
-ensime-sbt
-----------
-
-The `ensimeConfig` task to generate .ensime config files.
-
 sbt-api-mappings
 ----------------
 
