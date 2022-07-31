@@ -128,13 +128,14 @@ object Processing extends LazyLogging {
       .getOrCreate()
 
     val processing = new Processing(spark)
-    try processing.process(
-      input = conf.input(),
-      output = conf.output(),
-      limit = conf.limit.toOption,
-      lines = conf.linesToShow.toOption,
-      debug = conf.debug()
-    )
+    try
+      processing.process(
+        input = conf.input(),
+        output = conf.output(),
+        limit = conf.limit.toOption,
+        lines = conf.linesToShow.toOption,
+        debug = conf.debug()
+      )
     finally {
       if (conf.stay()) {
         logger.info("Waiting: press enter to exit")
