@@ -21,19 +21,21 @@ import org.apache.spark.sql.functions.udf
 /** This contains the user defined functions used by the DAG [[Steps]].
   *
   * Every function is provided as plain function and as functionUDF wrapped by
-  * org.apache.spark.sql.functions.udf. The former is easier to unit test,
-  * the later is used in a real Spark DAG step.
+  * org.apache.spark.sql.functions.udf. The former is easier to unit test, the later is used in a
+  * real Spark DAG step.
   *
-  * Lazy evaluation and higher order functions with closure can be used for
-  * pre-initialization and maintaining serializability.
+  * Lazy evaluation and higher order functions with closure can be used for pre-initialization and
+  * maintaining serializability.
   */
 object Functions extends LazyLogging {
 
   /** Converts a `&` separated string of `=` separated key, value pairs into a Map.
     *
-    * @param ks A string like `key1=value1&key2=value2&key3=value3&...`
-    * @return `Map("key1" -> "value1", "key2" -> "value2", ...)` or empty Map
-    *              in case of a non parseable string.
+    * @param ks
+    *   A string like `key1=value1&key2=value2&key3=value3&...`
+    * @return
+    *   `Map("key1" -> "value1", "key2" -> "value2", ...)` or empty Map in case of a non parseable
+    *   string.
     */
   def keyValueStringToMap(ks: String): Map[String, String] =
     Option(ks)

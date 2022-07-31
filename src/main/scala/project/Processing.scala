@@ -48,10 +48,14 @@ class Processing(spark: SparkSession) extends LazyLogging {
 
   /** Combines list of steps and print
     *
-    * @param dagSteps The dag steps to combine
-    * @param df The input Dataframe
-    * @param limit If set, Limits amount of combined steps to given number
-    * @param debug If true, prints the physical and logical plan
+    * @param dagSteps
+    *   The dag steps to combine
+    * @param df
+    *   The input Dataframe
+    * @param limit
+    *   If set, Limits amount of combined steps to given number
+    * @param debug
+    *   If true, prints the physical and logical plan
     */
   @SuppressWarnings(Array("VariableShadowing"))
   def combineSteps(
@@ -72,7 +76,8 @@ class Processing(spark: SparkSession) extends LazyLogging {
 
 /** Main cli parsing class
   *
-  * @param arguments The unparsed command line arguments
+  * @param arguments
+  *   The unparsed command line arguments
   */
 class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
   appendDefaultToDescription = true
@@ -104,10 +109,11 @@ class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
   verify()
 }
 
-/** Main entrypoint, parses the command line arguments, gets or creates the
-  * SparkSession und starts the DAG processing.
+/** Main entrypoint, parses the command line arguments, gets or creates the SparkSession und starts
+  * the DAG processing.
   *
-  * @param args The unparsed command line arguments
+  * @param args
+  *   The unparsed command line arguments
   */
 object Processing extends LazyLogging {
   def main(args: Array[String]): Unit = {
