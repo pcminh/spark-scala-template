@@ -20,8 +20,7 @@ import org.apache.spark.sql.{ Dataset, Row, SparkSession }
 import org.apache.spark.sql.functions._
 import Functions._
 
-/**
-  * This contains the Steps to build a complete DAG
+/** This contains the Steps to build a complete DAG
   *
   * Steps shall be written by using the [[org.apache.spark.sql.Dataset]] API,
   * functions from [[org.apache.spark.sql.functions]] and user defined functions
@@ -31,8 +30,7 @@ import Functions._
 class Steps(spark: SparkSession) extends LazyLogging {
   import spark.implicits._
 
-  /**
-    * Read data from local / hdfs / s3 source, the first step of a DAG
+  /** Read data from local / hdfs / s3 source, the first step of a DAG
     *
     * @param input Path to the data to read
     */
@@ -45,8 +43,7 @@ class Steps(spark: SparkSession) extends LazyLogging {
   def selectFinalFields(df: Dataset[Row]): Dataset[Row] =
     df.select("data.key1")
 
-  /**
-    * Write or show the data of a Dataset. This is the last step of a DAG.
+  /** Write or show the data of a Dataset. This is the last step of a DAG.
     *
     * This step can do two things: write compressed parquet files or show a
     * specified number of lines. The last one is for developing / debugging.

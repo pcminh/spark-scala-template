@@ -37,14 +37,14 @@ addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.0.1")
 
 // Adds a `scalafmt` task for automatic source code formatting
 // https://scalameta.org/scalafmt/docs/installation.html
-addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.5")
+addSbtPlugin("org.scalameta" % "sbt-scalafmt" % "2.4.6")
 
 // Adds a `dependencyUpdates` task to check Maven repositories for dependency updates
 // http://github.com/rtimush/sbt-updates
-addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.5.3")
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.6.3")
 
 // https://github.com/sbt/sbt-buildinfo
-addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.10.0")
+addSbtPlugin("com.eed3si9n" % "sbt-buildinfo" % "0.11.0")
 
 // Adds a `assembly` task to create a fat JAR with all of its dependencies
 addSbtPlugin("com.eed3si9n" % "sbt-assembly" % "1.1.0")
@@ -61,10 +61,10 @@ addSbtPlugin("com.typesafe.sbteclipse" % "sbteclipse-plugin" % "5.2.4")
 
 // A Sbt plugin that fills apiMappings for common Scala libraries.
 // https://github.com/ThoughtWorksInc/sbt-api-mappings/releases
-addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "3.0.0")
+addSbtPlugin("com.thoughtworks.sbt-api-mappings" % "sbt-api-mappings" % "3.0.2")
 
 // A git plugin for SBT https://github.com/sbt/sbt-git
-addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "1.0.2")
+addSbtPlugin("com.github.sbt" % "sbt-git" % "2.0.0")
 
 // disables warning: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
 // as explained here https://github.com/sbt/sbt-git

@@ -46,8 +46,7 @@ class Processing(spark: SparkSession) extends LazyLogging {
     logger.info("Finished processing")
   }
 
-  /**
-    * Combines list of steps and print
+  /** Combines list of steps and print
     *
     * @param dagSteps The dag steps to combine
     * @param df The input Dataframe
@@ -71,8 +70,7 @@ class Processing(spark: SparkSession) extends LazyLogging {
       }
 }
 
-/**
-  * Main cli parsing class
+/** Main cli parsing class
   *
   * @param arguments The unparsed command line arguments
   */
@@ -106,8 +104,7 @@ class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
   verify()
 }
 
-/**
-  * Main entrypoint, parses the command line arguments, gets or creates the
+/** Main entrypoint, parses the command line arguments, gets or creates the
   * SparkSession und starts the DAG processing.
   *
   * @param args The unparsed command line arguments

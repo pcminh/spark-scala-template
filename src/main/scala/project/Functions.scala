@@ -18,8 +18,7 @@ package project
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.functions.udf
 
-/**
-  * This contains the user defined functions used by the DAG [[Steps]].
+/** This contains the user defined functions used by the DAG [[Steps]].
   *
   * Every function is provided as plain function and as functionUDF wrapped by
   * org.apache.spark.sql.functions.udf. The former is easier to unit test,
@@ -30,8 +29,7 @@ import org.apache.spark.sql.functions.udf
   */
 object Functions extends LazyLogging {
 
-  /**
-    * Converts a `&` separated string of `=` separated key, value pairs into a Map.
+  /** Converts a `&` separated string of `=` separated key, value pairs into a Map.
     *
     * @param ks A string like `key1=value1&key2=value2&key3=value3&...`
     * @return `Map("key1" -> "value1", "key2" -> "value2", ...)` or empty Map
