@@ -20,10 +20,10 @@
 addSbtPlugin("org.scalastyle" %% "scalastyle-sbt-plugin" % "1.0.0")
 
 // http://github.com/puffnfresh/wartremover
-addSbtPlugin("org.wartremover" % "sbt-wartremover" % "2.4.16")
+addSbtPlugin("org.wartremover" % "sbt-wartremover" % "3.0.5")
 
 // http://github.com/wartremover/wartremover-contrib/
-addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "1.3.13")
+addSbtPlugin("org.wartremover" % "sbt-wartremover-contrib" % "2.0.0")
 
 // http://github.com/danielnixon/extrawarts
 addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
@@ -33,7 +33,7 @@ addSbtPlugin("org.danielnixon" % "sbt-extrawarts" % "1.0.3")
 addSbtPlugin("com.sksamuel.scapegoat" %% "sbt-scapegoat" % "1.1.1")
 
 // http://github.com/scoverage/sbt-scoverage
-addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.9.2")
+addSbtPlugin("org.scoverage" % "sbt-scoverage" % "2.0.1")
 
 // Adds a `scalafmt` task for automatic source code formatting
 // https://scalameta.org/scalafmt/docs/installation.html

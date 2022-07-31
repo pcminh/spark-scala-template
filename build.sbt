@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  */
 // Use the same scala version Spark is build with, see scala.version in
 // https://github.com/apache/spark/blob/master/pom.xml
-scalaVersion in ThisBuild := "2.12.15"
+scalaVersion in ThisBuild := "2.12.16"
 
 compileOrder := CompileOrder.JavaThenScala
 
@@ -167,7 +167,7 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 /*
  * Managed dependencies
  */
-val sparkVersion           = "3.2.0"
+val sparkVersion           = "3.3.0"
 val clusterDependencyScope = "provided"
 
 libraryDependencies ++= Seq(
@@ -178,13 +178,13 @@ libraryDependencies ++= Seq(
   // "org.apache.hadoop"          % "hadoop-client"  % "2.7.3" % clusterDependencyScope,
   //"org.vegas-viz"              %% "vegas-spark"   % "0.3.11",
   "org.slf4j"                  % "slf4j-log4j12"  % "1.7.36",
-  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.4",
+  "com.typesafe.scala-logging" %% "scala-logging" % "3.9.5",
   "org.rogach"                 %% "scallop"       % "4.1.0"
 ).map(_.exclude("ch.qos.logback", "logback-classic"))
 
 libraryDependencies ++= Seq(
-  "org.scalatest"    %% "scalatest"          % "3.2.11",
-  "com.holdenkarau"  %% "spark-testing-base" % "3.2.0_1.1.1",
+  "org.scalatest"    %% "scalatest"          % "3.2.13",
+  "com.holdenkarau"  %% "spark-testing-base" % "3.3.0_1.2.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
   // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
@@ -337,11 +337,9 @@ wartremoverErrors ++= Seq(
   Wart.StringPlusAny,
   Wart.Throw,
   Wart.ToString,
-  Wart.TraversableOps,
   Wart.TryPartial,
   Wart.Var,
   Wart.While,
-  ContribWart.ExposedTuples,
   ContribWart.OldTime,
   ContribWart.SealedCaseClass,
   ContribWart.SomeApply,
@@ -358,7 +356,7 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-scapegoatVersion in ThisBuild := "1.4.11"
+scapegoatVersion in ThisBuild := "1.4.15"
 scapegoatDisabledInspections := Seq.empty
 scapegoatIgnoredFiles := Seq.empty
 
@@ -504,7 +502,7 @@ scalacOptions += "-P:linter:enable-only:" +
 /*
  * scoverage: http://github.com/scoverage/sbt-scoverage
  */
-coverageMinimum := 90
+coverageMinimumStmtTotal := 90
 coverageFailOnMinimum := false
 coverageOutputCobertura := true
 coverageOutputHTML := true
