@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  */
 // Use the same scala version Spark is build with, see scala.version in
 // https://github.com/apache/spark/blob/master/pom.xml
-scalaVersion in ThisBuild := "2.12.16"
+ThisBuild / scalaVersion := "2.12.16"
 
 compileOrder := CompileOrder.JavaThenScala
 
@@ -98,19 +98,19 @@ scalacOptions ++= commonScalacOptions ++ compileScalacOptions ++ Seq(
   "-Ywarn-value-discard" // Warn when non-Unit expression results are unused
 )
 
-scalacOptions in (Test, compile) := commonScalacOptions ++ compileScalacOptions
+Test / compile / scalacOptions := commonScalacOptions ++ compileScalacOptions
 
-scalacOptions in (Compile, console) := commonScalacOptions ++ Seq(
+Compile / console / scalacOptions := commonScalacOptions ++ Seq(
   "-language:_", // Enable or disable language features (see list below)
   "-nowarn" // Generate no warnings
 )
 
-scalacOptions in (Test, console) := (scalacOptions in (Compile, console)).value
+Test / console / scalacOptions  := (Compile / console / scalacOptions).value
 
 // Have fullClasspath during compile, test and run, but don't assemble what is marked provided
 // https://github.com/sbt/sbt-assembly#-provided-configuration
-run in Compile := Defaults
-  .runTask(fullClasspath in Compile, mainClass in (Compile, run), runner in (Compile, run))
+Compile /run := Defaults
+  .runTask(Compile / fullClasspath, Compile / run / mainClass,  Compile / run / runner)
   .evaluated
 
 /*
@@ -250,12 +250,12 @@ var _sparkInitialized = false
 @transient lazy val sc = spark.sparkContext
 """
 
-cleanupCommands in console := """
+console / cleanupCommands := """
 if (_sparkInitialized) {spark.stop()}
 """
 
 // Do not exit sbt when Ctrl-C is used to stop a running app
-cancelable in Global := true
+Global / cancelable := true
 
 // Improved dependency management
 updateOptions := updateOptions.value.withCachedResolution(true)
@@ -290,18 +290,18 @@ scalastyleFailOnError := true
 lazy val mainScalastyle = taskKey[Unit]("mainScalastyle")
 lazy val testScalastyle = taskKey[Unit]("testScalastyle")
 
-mainScalastyle := scalastyle.in(Compile).toTask("").value
-testScalastyle := scalastyle.in(Test).toTask("").value
+mainScalastyle := (Compile / scalastyle).toTask("").value
+testScalastyle := (Test / scalastyle).toTask("").value
 
-(test in Test) := ((test in Test) dependsOn testScalastyle).value
-(test in Test) := ((test in Test) dependsOn mainScalastyle).value
+(Test / test) := ((Test / test) dependsOn testScalastyle).value
+(Test / test) := ((Test / test) dependsOn mainScalastyle).value
 
 /*
  * sbt-assembly https://github.com/sbt/sbt-assembly
  */
-test in assembly := {}
+assembly / test := {}
 // scala-library is provided by spark cluster execution environment
-assemblyOption in assembly := (assemblyOption in assembly).value.copy(includeScala = false)
+assembly / assemblyOption := (assembly / assemblyOption).value.withIncludeScala(false)
 
 /*
  * WartRemover: http://github.com/wartremover/wartremover
@@ -356,7 +356,7 @@ wartremoverErrors ++= Seq(
 /*
  * Scapegoat: http://github.com/sksamuel/scapegoat
  */
-scapegoatVersion in ThisBuild := "1.4.15"
+ThisBuild / scapegoatVersion := "1.4.15"
 scapegoatDisabledInspections := Seq.empty
 scapegoatIgnoredFiles := Seq.empty
 
@@ -364,11 +364,11 @@ scapegoatIgnoredFiles := Seq.empty
 lazy val mainScapegoat = taskKey[Unit]("mainScapegoat")
 lazy val testScapegoat = taskKey[Unit]("testScapegoat")
 
-mainScapegoat := scapegoat.in(Compile).value
-testScapegoat := scapegoat.in(Test).value
+mainScapegoat := (Compile / scapegoat).value
+testScapegoat := (Test / scapegoat).value
 
-(test in Test) := ((test in Test) dependsOn testScapegoat).value
-(test in Test) := ((test in Test) dependsOn mainScapegoat).value
+(Test / test) := ((Test / test) dependsOn testScapegoat).value
+(Test / test) := ((Test / test) dependsOn mainScapegoat).value
 
 /*
  * Linter: http://github.com/HairyFotr/linter
@@ -511,11 +511,11 @@ coverageOutputXML := true
 /*
  * Scalafmt: http://github.com/lucidsoftware/neo-sbt-scalafmt
  */
-scalafmtConfig in ThisBuild := baseDirectory.value / "project" / "scalafmt.conf"
-scalafmtOnCompile in ThisBuild := true
+ThisBuild / scalafmtConfig := baseDirectory.value / "project" / "scalafmt.conf"
+ThisBuild / scalafmtOnCompile := true
 
 /*
  * Scaladoc options
  */
 autoAPIMappings := true
-scalacOptions in (Compile, doc) ++= Seq("-groups", "-implicits") // "-diagrams")
+Compile / doc / scalacOptions ++= Seq("-groups", "-implicits") // "-diagrams")

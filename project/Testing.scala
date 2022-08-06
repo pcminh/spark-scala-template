@@ -24,26 +24,26 @@ object Testing {
   val testAll = TaskKey[Unit]("test-all")
 
   val testSettings = Seq(
-    fork in Test := true,
-    parallelExecution in Test := true
+    Test / fork := true,
+    Test / parallelExecution := true
   )
 
   val itSettings = inConfig(IntegrationTest)(Defaults.testSettings) ++ Seq(
-    fork in IntegrationTest := true,
-    parallelExecution in IntegrationTest := false,
-    scalaSource in IntegrationTest := baseDirectory.value / "src/it/scala"
+    IntegrationTest / fork := true,
+    IntegrationTest / parallelExecution := false,
+    IntegrationTest / scalaSource := baseDirectory.value / "src/it/scala"
   )
 
   val e2eSettings = inConfig(EndToEndTest)(Defaults.testSettings) ++ Seq(
-    fork in EndToEndTest := false,
-    parallelExecution in EndToEndTest := false,
-    scalaSource in EndToEndTest := baseDirectory.value / "src/e2e/scala"
+    EndToEndTest / fork := false,
+    EndToEndTest /parallelExecution := false,
+    EndToEndTest / scalaSource := baseDirectory.value / "src/e2e/scala"
   )
 
   val settings = testSettings ++ itSettings ++ e2eSettings ++ Seq(
     testAll := (()),
-    testAll := testAll.dependsOn(test in EndToEndTest).value,
-    testAll := testAll.dependsOn(test in IntegrationTest).value,
-    testAll := testAll.dependsOn(test in Test).value
+    testAll := testAll.dependsOn(EndToEndTest / test).value,
+    testAll := testAll.dependsOn(IntegrationTest / test).value,
+    testAll := testAll.dependsOn(Test / test).value
   )
 }
