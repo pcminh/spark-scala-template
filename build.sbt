@@ -41,7 +41,7 @@ licenses += "Apache-2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.html
  */
 // Use the same scala version Spark is build with, see scala.version in
 // https://github.com/apache/spark/blob/master/pom.xml
-ThisBuild / scalaVersion := "2.12.16"
+ThisBuild / scalaVersion := "2.11.12"
 
 compileOrder := CompileOrder.JavaThenScala
 
@@ -167,7 +167,7 @@ l:classpath         Enable cross-method optimizations across the entire classpat
 /*
  * Managed dependencies
  */
-val sparkVersion           = "3.3.1"
+val sparkVersion           = "2.3.2"
 val clusterDependencyScope = "provided"
 
 libraryDependencies ++= Seq(
@@ -184,7 +184,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= Seq(
   "org.scalatest"    %% "scalatest"          % "3.2.15",
-  "com.holdenkarau"  %% "spark-testing-base" % "3.3.1_1.4.0",
+  "com.holdenkarau"  %% "spark-testing-base" % "2.3.2_0.14.0",
   "org.apache.spark" %% "spark-hive"         % sparkVersion // required by spark-testing-base
   // "org.scalacheck"    %% "scalacheck"                  % "1.13.5",
   // "org.scalamock"     %% "scalamock-scalatest-support" % "3.6.0",
@@ -374,3 +374,11 @@ ThisBuild / scalafmtOnCompile := true
  */
 autoAPIMappings := true
 Compile / doc / scalacOptions ++= Seq("-groups", "-implicits") // "-diagrams")
+
+/*
+ * sbt-assembly duplication workaround
+ */
+// assemblyMergeStrategy in assembly := {   
+//   case PathList("META-INF", xs @ _*) => MergeStrategy.discard   
+//   case x => MergeStrategy.first 
+// }
