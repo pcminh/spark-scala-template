@@ -18,7 +18,7 @@ package project
 import common.StepsBase
 import org.apache.spark.sql.{ Dataset, Row, SparkSession }
 import org.apache.spark.sql.functions._
-import Functions._
+import common.Functions._
 
 /** This contains the Steps to build a complete DAG
   *

@@ -15,10 +15,8 @@
  */
 package project.common
 
-import buildinfo.BuildInfo
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.{ Dataset, Row, SparkSession }
-import org.rogach.scallop._
 
 abstract class ProcessingBase(spark: SparkSession) extends LazyLogging {
 
@@ -77,34 +75,34 @@ abstract class ProcessingBase(spark: SparkSession) extends LazyLogging {
   * @param args
   *   The unparsed command line arguments
   */
-object ProcessingBase extends LazyLogging {
-  def main(args: Array[String]): Unit = {
-    logger.info(s"Starting '${BuildInfo.name}' version '${BuildInfo.version}'")
+// object ProcessingBase extends LazyLogging {
+//   def main(args: Array[String]): Unit = {
+//     logger.info(s"Starting '${BuildInfo.name}' version '${BuildInfo.version}'")
 
-    val conf = new CliConf(args)
-    logger.info(s"The command line parameters are: ${conf.summary}")
+//     val conf = new CliConf(args)
+//     logger.info(s"The command line parameters are: ${conf.summary}")
 
-    lazy val spark = SparkSession.builder
-      .master(conf.nodes())
-      .appName(BuildInfo.name)
-      .getOrCreate()
+//     lazy val spark = SparkSession.builder
+//       .master(conf.nodes())
+//       .appName(BuildInfo.name)
+//       .getOrCreate()
 
-    val processing = new Processing(spark)
-    try
-      processing.process(
-        input = conf.input(),
-        inputType = conf.inputType(),
-        output = conf.output(),
-        limit = conf.limit.toOption,
-        lines = conf.linesToShow.toOption,
-        debug = conf.debug()
-      )
-    finally {
-      if (conf.stay()) {
-        logger.info("Waiting: press enter to exit")
-        logger.info(System.in.read().toString)
-      }
-      spark.stop()
-    }
-  }
-}
+//     val processing = new ProcessingBase(spark)
+//     try
+//       processing.process(
+//         input = conf.input(),
+//         inputType = conf.inputType(),
+//         output = conf.output(),
+//         limit = conf.limit.toOption,
+//         lines = conf.linesToShow.toOption,
+//         debug = conf.debug()
+//       )
+//     finally {
+//       if (conf.stay()) {
+//         logger.info("Waiting: press enter to exit")
+//         logger.info(System.in.read().toString)
+//       }
+//       spark.stop()
+//     }
+//   }
+// }

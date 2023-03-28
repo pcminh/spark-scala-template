@@ -15,11 +15,10 @@
  */
 package project
 
-import common.ProcessingBase
+import common.{ CliConf, ProcessingBase }
 import buildinfo.BuildInfo
 import com.typesafe.scalalogging.LazyLogging
 import org.apache.spark.sql.SparkSession
-// import org.rogach.scallop._
 
 class Processing(spark: SparkSession) extends ProcessingBase(spark) {
   override val steps = new Steps(spark)

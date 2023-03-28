@@ -1,5 +1,7 @@
 package project.common
 
+import org.rogach.scallop._
+
 /** Main cli parsing class
   *
   * @param arguments
