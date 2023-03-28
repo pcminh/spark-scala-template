@@ -34,9 +34,11 @@ class Steps(spark: SparkSession) extends LazyLogging {
     *
     * @param input
     *   Path to the data to read
+    * @param inputType
+    *   Generic Load/Save Functions Format Type (json, csv, orc, parquet)
     */
-  def read(input: String): Dataset[Row] =
-    spark.read.format("json").load(input)
+  def read(input: String, inputType: String): Dataset[Row] =
+    if (inputType == "sql") spark.sql(input) else spark.read.format(inputType).load(input)
 
   def decodeData(df: Dataset[Row]): Dataset[Row] =
     df.withColumn("data", keyValueStringToMapUDF(unbase64($"raw_data")))
