@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package project
+package project.common
 
 import buildinfo.BuildInfo
 import com.typesafe.scalalogging.LazyLogging
@@ -22,7 +22,7 @@ import org.rogach.scallop._
 
 abstract class ProcessingBase(spark: SparkSession) extends LazyLogging {
 
-  val steps = new Steps(spark)
+  val steps: StepsBase
   val dagSteps: Vector[Dataset[Row] => Dataset[Row]]
 
   def process(
@@ -71,50 +71,6 @@ abstract class ProcessingBase(spark: SparkSession) extends LazyLogging {
       }
 }
 
-/** Main cli parsing class
-  *
-  * @param arguments
-  *   The unparsed command line arguments
-  */
-class Conf(arguments: Seq[String]) extends ScallopConf(arguments) {
-  appendDefaultToDescription = true
-  val nodes = opt[String]("nodes", descr = "Spark nodes (local run)", default = Option("local[*]"))
-  val stay = opt[Boolean](
-    "stay",
-    descr =
-      "Wait for key press to exit (to keep SparkSession and webserver running while debugging)",
-    default = Option(false)
-  )
-  val input = opt[String](
-    "input",
-    descr = "Path to the raw data to process (local, hdfs, s3) or SQL statement (sql)",
-    required = true
-  )
-  val inputType = opt[String](
-    "inputType",
-    descr = "Generic Load/Save Functions Format Type (json, csv, orc, parquet)",
-    required = true
-  )
-  val output = opt[String]("output", descr = "Output path (local, hdfs, s3)", required = true)
-  val limit =
-    opt[Int](
-      "limit",
-      descr = "Limit DAG steps to given number, the read and write/show steps are always added"
-    )
-  val linesToShow = opt[Int](
-    "linesToShow",
-    descr =
-      "Amount of lines to shows to the console (instead of writing snappy compressed parquet files)"
-  )
-  val debug = opt[Boolean](
-    "debug",
-    descr = "Explains plan during DAG construction",
-    default = Option(false)
-  )
-
-  verify()
-}
-
 /** Main entrypoint, parses the command line arguments, gets or creates the SparkSession und starts
   * the DAG processing.
   *
@@ -125,7 +81,7 @@ object ProcessingBase extends LazyLogging {
   def main(args: Array[String]): Unit = {
     logger.info(s"Starting '${BuildInfo.name}' version '${BuildInfo.version}'")
 
-    val conf = new Conf(args)
+    val conf = new CliConf(args)
     logger.info(s"The command line parameters are: ${conf.summary}")
 
     lazy val spark = SparkSession.builder
