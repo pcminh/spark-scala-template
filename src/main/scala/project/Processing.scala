@@ -43,8 +43,9 @@ object Processing extends LazyLogging {
     logger.info(s"The command line parameters are: ${conf.summary}")
 
     lazy val spark = SparkSession.builder
-      .master(conf.nodes())
+      // .master(conf.nodes())
       .appName(BuildInfo.name)
+      .enableHiveSupport()
       .getOrCreate()
 
     val processing = new Processing(spark)
